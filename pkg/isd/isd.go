@@ -23,7 +23,7 @@ func parseAdditionalDataSection(line string) AdditionalData {
 			rec = fmt.Sprint(line[cur:(cur + 2)])
 			qty, err = strconv.Atoi(line[(cur + 2):(cur + 3)])
 			if err != nil {
-				log.Println("ADDITIONAL DATA SECTION")
+				log.Println("ADDITIONAL DATA SECTION", line[cur:(cur+3)])
 				log.Fatal(err)
 			}
 		}
