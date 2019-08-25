@@ -136,6 +136,7 @@ func Parse(line string) Record {
 
 	dir, err := strconv.Atoi(line[60:63])
 	if err != nil {
+		log.Println("Wind Direction Angle")
 		log.Fatal(err)
 	}
 	rc.WindDirectionAngle = dir
@@ -154,6 +155,7 @@ func Parse(line string) Record {
 
 	ceil, err := strconv.Atoi(line[70:75])
 	if err != nil {
+		log.Println("Ceiling Height")
 		log.Fatal(err)
 	}
 	rc.CeilingHeight = ceil
@@ -166,6 +168,7 @@ func Parse(line string) Record {
 
 	vis, err := strconv.Atoi(line[78:84])
 	if err != nil {
+		log.Println("Visibility")
 		log.Fatal(err)
 	}
 	rc.Visibility = vis

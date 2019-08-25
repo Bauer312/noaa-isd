@@ -23,6 +23,7 @@ func parseAdditionalDataSection(line string) AdditionalData {
 			rec = fmt.Sprint(line[cur:(cur + 2)])
 			qty, err = strconv.Atoi(line[(cur + 2):(cur + 3)])
 			if err != nil {
+				log.Println("ADDITIONAL DATA SECTION")
 				log.Fatal(err)
 			}
 		}
@@ -146,6 +147,7 @@ func parseAA(cur int, line string) LiquidPrecipitation {
 
 	period, err := strconv.Atoi(line[cur:(cur + 2)])
 	if err != nil {
+		log.Println("AA")
 		log.Fatal(err)
 	}
 	rc.Period = period
@@ -200,6 +202,7 @@ func parseAE(cur int, line string) PrecipitationDays {
 
 	days, err := strconv.Atoi(line[cur:(cur + 2)])
 	if err != nil {
+		log.Println("AE")
 		log.Fatal(err)
 	}
 	rc.HundredthDays = days
@@ -207,6 +210,7 @@ func parseAE(cur int, line string) PrecipitationDays {
 
 	days, err = strconv.Atoi(line[(cur + 3):(cur + 5)])
 	if err != nil {
+		log.Println("AE")
 		log.Fatal(err)
 	}
 	rc.TenthDays = days
@@ -214,6 +218,7 @@ func parseAE(cur int, line string) PrecipitationDays {
 
 	days, err = strconv.Atoi(line[(cur + 6):(cur + 8)])
 	if err != nil {
+		log.Println("AE")
 		log.Fatal(err)
 	}
 	rc.HalfDays = days
@@ -221,6 +226,7 @@ func parseAE(cur int, line string) PrecipitationDays {
 
 	days, err = strconv.Atoi(line[(cur + 9):(cur + 11)])
 	if err != nil {
+		log.Println("AE")
 		log.Fatal(err)
 	}
 	rc.OneDays = days
@@ -234,6 +240,7 @@ func parseAH(cur int, line string) MonthlyPrecipitationShortDuration {
 
 	minutes, err := strconv.Atoi(line[cur:(cur + 3)])
 	if err != nil {
+		log.Println("AH")
 		log.Fatal(err)
 	}
 	rc.Minutes = minutes
@@ -256,6 +263,7 @@ func parseAI(cur int, line string) MonthlyPrecipitationShortDurationMax {
 
 	minutes, err := strconv.Atoi(line[cur:(cur + 3)])
 	if err != nil {
+		log.Println("AI")
 		log.Fatal(err)
 	}
 	rc.Minutes = minutes
@@ -278,6 +286,7 @@ func parseKB(cur int, line string) AverageAirTemperature {
 
 	hours, err := strconv.Atoi(line[cur:(cur + 3)])
 	if err != nil {
+		log.Println("KB")
 		log.Fatal(err)
 	}
 	rc.Hours = hours
@@ -318,6 +327,7 @@ func parseKD(cur int, line string) HeatingCoolingDays {
 
 	hours, err := strconv.Atoi(line[cur:(cur + 3)])
 	if err != nil {
+		log.Println("KD")
 		log.Fatal(err)
 	}
 	rc.Hours = hours
@@ -326,6 +336,7 @@ func parseKD(cur int, line string) HeatingCoolingDays {
 
 	qty, err := strconv.Atoi(line[(cur + 4):(cur + 8)])
 	if err != nil {
+		log.Println("KD")
 		log.Fatal(err)
 	}
 	rc.Quantity = qty
@@ -339,6 +350,7 @@ func parseKE(cur int, line string) CriteriaDaysTemp {
 
 	qty, err := strconv.Atoi(line[cur:(cur + 2)])
 	if err != nil {
+		log.Println("KE")
 		log.Fatal(err)
 	}
 	rc.MaxLow = qty
@@ -346,6 +358,7 @@ func parseKE(cur int, line string) CriteriaDaysTemp {
 
 	qty, err = strconv.Atoi(line[(cur + 3):(cur + 5)])
 	if err != nil {
+		log.Println("KE")
 		log.Fatal(err)
 	}
 	rc.MaxHigh = qty
@@ -353,6 +366,7 @@ func parseKE(cur int, line string) CriteriaDaysTemp {
 
 	qty, err = strconv.Atoi(line[(cur + 6):(cur + 8)])
 	if err != nil {
+		log.Println("KE")
 		log.Fatal(err)
 	}
 	rc.MinLow = qty
@@ -360,6 +374,7 @@ func parseKE(cur int, line string) CriteriaDaysTemp {
 
 	qty, err = strconv.Atoi(line[(cur + 9):(cur + 11)])
 	if err != nil {
+		log.Println("KE")
 		log.Fatal(err)
 	}
 	rc.MinReallyLow = qty
@@ -376,6 +391,7 @@ func parseGA(cur int, line string) SkyCover {
 
 	height, err := strconv.Atoi(line[(cur + 3):(cur + 9)])
 	if err != nil {
+		log.Println("GA")
 		log.Fatal(err)
 	}
 	rc.BaseHeight = height
@@ -396,6 +412,7 @@ func parseGD(cur int, line string) SkyCoverSummation {
 
 	height, err := strconv.Atoi(line[(cur + 4):(cur + 10)])
 	if err != nil {
+		log.Println("GD")
 		log.Fatal(err)
 	}
 	rc.Height = height
@@ -414,12 +431,14 @@ func parseGE(cur int, line string) SkyCondition {
 
 	height, err := strconv.Atoi(line[(cur + 7):(cur + 13)])
 	if err != nil {
+		log.Println("GE")
 		log.Fatal(err)
 	}
 	rc.BaseHeightUpperRange = height
 
 	height, err = strconv.Atoi(line[(cur + 13):(cur + 19)])
 	if err != nil {
+		log.Println("GE")
 		log.Fatal(err)
 	}
 	rc.BaseHeightLowerRange = height
@@ -454,6 +473,7 @@ func parseGF(cur int, line string) SkyConditionObservation {
 
 	height, err := strconv.Atoi(line[(cur + 11):(cur + 16)])
 	if err != nil {
+		log.Println("GF")
 		log.Fatal(err)
 	}
 	rc.LowCloudBaseHeight = height
@@ -556,6 +576,7 @@ func parseOD(cur int, line string) WindObservation {
 	rc.ObservationType = fmt.Sprint(line[cur:(cur + 1)])
 	hrs, err := strconv.Atoi(line[(cur + 1):(cur + 3)])
 	if err != nil {
+		log.Println("OD")
 		log.Fatal(err)
 	}
 	rc.Hours = hrs
@@ -570,6 +591,7 @@ func parseOD(cur int, line string) WindObservation {
 
 	dir, err := strconv.Atoi(line[(cur + 8):(cur + 11)])
 	if err != nil {
+		log.Println("OD")
 		log.Fatal(err)
 	}
 	rc.Direction = dir
@@ -582,6 +604,7 @@ func parseAJ(cur int, line string) SnowDepth {
 
 	depth, err := strconv.Atoi(line[cur:(cur + 4)])
 	if err != nil {
+		log.Println("AJ")
 		log.Fatal(err)
 	}
 	rc.Depth = depth
@@ -606,12 +629,14 @@ func parseAL(cur int, line string) SnowAccumulation {
 
 	hrs, err := strconv.Atoi(line[cur:(cur + 2)])
 	if err != nil {
+		log.Println("AL")
 		log.Fatal(err)
 	}
 	rc.Hours = hrs
 
 	depth, err := strconv.Atoi(line[(cur + 2):(cur + 5)])
 	if err != nil {
+		log.Println("AL")
 		log.Fatal(err)
 	}
 	rc.Depth = depth
@@ -627,6 +652,7 @@ func parseAN(cur int, line string) PeriodSnowAccumulation {
 
 	hrs, err := strconv.Atoi(line[cur:(cur + 3)])
 	if err != nil {
+		log.Println("AN")
 		log.Fatal(err)
 	}
 	rc.Hours = hrs
@@ -672,6 +698,7 @@ func parseOE(cur int, line string) WindSummaryDay {
 
 	hrs, err := strconv.Atoi(line[(cur + 1):(cur + 3)])
 	if err != nil {
+		log.Println("OE")
 		log.Fatal(err)
 	}
 	rc.Hours = hrs
@@ -684,6 +711,7 @@ func parseOE(cur int, line string) WindSummaryDay {
 
 	dir, err := strconv.Atoi(line[(cur + 8):(cur + 11)])
 	if err != nil {
+		log.Println("OE")
 		log.Fatal(err)
 	}
 	rc.Direction = dir
@@ -701,6 +729,7 @@ func parseREM(cur int, line string) Remark {
 
 	length, err := strconv.Atoi(line[(cur + 3):(cur + 6)])
 	if err != nil {
+		log.Println("REM")
 		log.Fatal(err)
 	}
 	rc.Length = length
