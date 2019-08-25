@@ -46,6 +46,30 @@ func parseAdditionalDataSection(line string) AdditionalData {
 		case "AI":
 			extra.MonthlyPrecipitationShortDurationMax[qty-1] = parseAI(cur, line)
 			cur += 15
+		case "AU":
+			extra.PresentWeather[qty-1] = parseAU(cur, line)
+			cur += 8
+		case "AK":
+			cur += 12
+		case "AJ":
+			extra.SnowDepth = parseAJ(cur, line)
+			cur += 14
+		case "AL":
+			extra.SnowAccumulation[qty-1] = parseAL(cur, line)
+			cur += 7
+		case "AM":
+			cur += 17
+		case "AN":
+			extra.PeriodSnowAccumulation = parseAN(cur, line)
+			cur += 9
+		case "AW":
+			cur += 3
+		case "AT":
+			cur += 9
+		case "AX":
+			cur += 6
+		case "ED":
+			cur += 8
 		case "GA":
 			extra.SkyCover[qty-1] = parseGA(cur, line)
 			cur += 13
@@ -85,24 +109,10 @@ func parseAdditionalDataSection(line string) AdditionalData {
 		case "KE":
 			extra.CriteriaDaysTemp = parseKE(cur, line)
 			cur += 12
-		case "AU":
-			extra.PresentWeather[qty-1] = parseAU(cur, line)
-			cur += 8
-		case "AJ":
-			extra.SnowDepth = parseAJ(cur, line)
-			cur += 14
-		case "AL":
-			extra.SnowAccumulation[qty-1] = parseAL(cur, line)
-			cur += 7
-		case "AN":
-			extra.PeriodSnowAccumulation = parseAN(cur, line)
-			cur += 9
-		case "AW":
-			cur += 3
-		case "AT":
-			cur += 9
-		case "AX":
-			cur += 6
+		case "KG":
+			cur += 11
+		case "MF":
+			cur += 12
 		case "MG":
 			extra.StationPressureDay = parseMG(cur, line)
 			cur += 12
@@ -117,6 +127,10 @@ func parseAdditionalDataSection(line string) AdditionalData {
 		case "OE":
 			extra.WindSummaryDay[qty-1] = parseOE(cur, line)
 			cur += 16
+		case "RH":
+			cur += 9
+		case "WA":
+			cur += 6
 		case "REM":
 			extra.Remark = parseREM(cur, line)
 			cur = len(line)

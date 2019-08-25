@@ -57,7 +57,7 @@ func main() {
 	if err := scanner.Err(); err != nil {
 		log.Fatal(err)
 	}
-	fmt.Printf("Processed %d FM-15 records\n", count)
+	fmt.Printf("Processed %d FM-15 records in %s\n", count, *in)
 }
 
 func processRecords(old, new isd.Record, outfp *os.File) {
