@@ -59,7 +59,7 @@ func parseAdditionalDataSection(line string) AdditionalData {
 			extra.SnowAccumulation[qty-1] = parseAL(cur, line)
 			cur += 7
 		case "AM":
-			cur += 17
+			cur += 18
 		case "AN":
 			extra.PeriodSnowAccumulation = parseAN(cur, line)
 			cur += 9
