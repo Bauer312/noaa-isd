@@ -222,9 +222,9 @@ func BasicHeader(delim string) string {
 
 	b.WriteString("STATIONID")
 	b.WriteString(delim)
-	b.WriteString("DATE")
+	b.WriteString("SV_DATE")
 	b.WriteString(delim)
-	b.WriteString("TIME")
+	b.WriteString("SV_TIME")
 	b.WriteString(delim)
 	b.WriteString("LATITUDE")
 	b.WriteString(delim)
