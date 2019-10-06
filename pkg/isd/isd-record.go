@@ -43,6 +43,7 @@ type Record struct {
 	SeaLevelPressureQualityCode      string
 	RelativeHumidity                 float64
 	SaturationVaporPressure          float64
+	AirDensity                       float64
 	Extra                            AdditionalData
 }
 
@@ -91,6 +92,8 @@ func (r *Record) RecordString(delim string) string {
 	fmt.Fprint(&b, r.SaturationVaporPressure)
 	b.WriteString(delim)
 	fmt.Fprint(&b, r.Extra.PressureObservation.StationPressure)
+	b.WriteString(delim)
+	fmt.Fprint(&b, r.AirDensity)
 	b.WriteString(delim)
 	b.WriteString(r.Extra.Remark.Remark)
 
@@ -260,6 +263,8 @@ func BasicHeader(delim string) string {
 	b.WriteString(delim)
 	b.WriteString("STATIONPRESSURE")
 	b.WriteString(delim)
+	b.WriteString("AIRDENSITY")
+	b.WriteString(delim)
 	b.WriteString("REMARK")
 
 	return b.String()
@@ -288,4 +293,8 @@ func getRelativeHumidity(dewPoint, tempC float64) float64 {
 
 func convertHectoPascalToMMHG(val float64) float64 {
 	return val * 0.7500638
+}
+
+func getAirDensity(temp, stationPressure, svp, humidity float64) float64 {
+	return 1.2929 * (273.0 / (temp + 273.0)) * ((stationPressure - (0.379 * svp * humidity / 100.0)) / 760.0)
 }
