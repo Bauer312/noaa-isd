@@ -94,10 +94,6 @@ func (r *Record) RecordString(delim string) string {
 	fmt.Fprint(&b, r.Extra.PressureObservation.StationPressure)
 	b.WriteString(delim)
 	fmt.Fprint(&b, r.AirDensity)
-	b.WriteString(delim)
-	b.WriteString(r.Extra.Remark.Remark)
-
-	//fmt.Fprint(&b,
 
 	return b.String()
 }
@@ -264,8 +260,6 @@ func BasicHeader(delim string) string {
 	b.WriteString("STATIONPRESSURE")
 	b.WriteString(delim)
 	b.WriteString("AIRDENSITY")
-	b.WriteString(delim)
-	b.WriteString("REMARK")
 
 	return b.String()
 }
