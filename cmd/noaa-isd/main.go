@@ -64,7 +64,7 @@ func main() {
 
 	for _, rec := range isdFiles {
 		if *team == "all" || *team == rec.team {
-			downloadFile(*url, rec.stationID, "/Users/brian/Downloads", *year)
+			downloadFile(*url, rec.stationID, *output, *year)
 		}
 	}
 }

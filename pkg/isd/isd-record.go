@@ -210,6 +210,11 @@ func Parse(line string) Record {
 		rc.Extra = parseAdditionalDataSection(line)
 	}
 
+	rc.AirDensity = getAirDensity(rc.Temperature,
+		rc.Extra.PressureObservation.StationPressure,
+		rc.SaturationVaporPressure,
+		rc.RelativeHumidity)
+
 	return rc
 }
 

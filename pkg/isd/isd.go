@@ -736,6 +736,5 @@ func parseREM(cur int, line string) Remark {
 
 	rc.Remark = fmt.Sprint(line[(cur + 6):])
 
-	//fmt.Println(rc)
 	return rc
 }
