@@ -6,6 +6,7 @@ import (
 	"math"
 	"strconv"
 	"strings"
+	"time"
 )
 
 /*
@@ -15,6 +16,7 @@ type Record struct {
 	Station                          string
 	Date                             string
 	Time                             string
+	DateTime                         time.Time
 	DataSourceFlag                   string
 	Latitude                         float64
 	Longitude                        float64
@@ -55,9 +57,7 @@ func (r *Record) RecordString(delim string) string {
 
 	b.WriteString(r.Station)
 	b.WriteString(delim)
-	b.WriteString(r.Date)
-	b.WriteString(delim)
-	b.WriteString(r.Time)
+	b.WriteString(r.DateTime.Format("2006-01-02 15:04:05"))
 	b.WriteString(delim)
 	fmt.Fprint(&b, r.Latitude)
 	b.WriteString(delim)
@@ -107,6 +107,11 @@ func Parse(line string) Record {
 	rc.Station = fmt.Sprint(line[4:15])
 	rc.Date = fmt.Sprint(line[15:23])
 	rc.Time = fmt.Sprint(line[23:27])
+	t, err := time.Parse("200601021504", rc.Date+rc.Time)
+	if err != nil {
+		log.Fatal(err)
+	}
+	rc.DateTime = t
 	rc.DataSourceFlag = fmt.Sprint(line[27:28])
 
 	lat1000, err := strconv.ParseFloat(line[28:34], 64)
@@ -226,9 +231,7 @@ func BasicHeader(delim string) string {
 
 	b.WriteString("STATIONID")
 	b.WriteString(delim)
-	b.WriteString("SV_DATE")
-	b.WriteString(delim)
-	b.WriteString("SV_TIME")
+	b.WriteString("TIMESTAMP")
 	b.WriteString(delim)
 	b.WriteString("LATITUDE")
 	b.WriteString(delim)
