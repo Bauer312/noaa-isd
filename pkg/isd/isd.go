@@ -83,6 +83,10 @@ func parseAdditionalDataSection(line string) AdditionalData {
 		case "GF":
 			extra.SkyConditionObservation = parseGF(cur, line)
 			cur += 23
+		case "GJ":
+			cur += 5
+		case "GK":
+			cur += 4
 		case "MA":
 			extra.PressureObservation = parseMA(cur, line)
 			cur += 12
